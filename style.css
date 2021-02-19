@@ -13,9 +13,32 @@ body {
     color: rgb(245, 242, 239);
     text-align: center;
     justify-content: space-evenly;
+    font-size: 1.2em;
+    position: fixed;
 }
 
 
+.navbar li {
+    list-style: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar li a:hover {
+    color: rgb(252, 235, 0);
+    font-size: 1.4em;
+    transition: 0.5s;
+}
+
+.navbar li:nth-child(2) {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.4em;
+}
+
+.navbar li:nth-child(2) a:hover {
+    color: rgb(228, 9, 9);
+}
+
 .navbar li a {
     color: inherit;
+    text-decoration: none;
 }
