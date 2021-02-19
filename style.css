@@ -93,3 +93,16 @@ figure {
     color: rgb(219, 16, 16);
     transition: 0.5s;
 }
+
+.socmed {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.socmed a {
+    color: inherit;
+}
+
+.socmed i {
+    margin-right: 15px;
+}
