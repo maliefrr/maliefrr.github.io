@@ -12,7 +12,7 @@ body {
     display: flex;
     color: rgb(245, 242, 239);
     text-align: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     font-size: 1.2em;
     position: fixed;
     width: 100%;
@@ -30,13 +30,15 @@ body {
     transition: 0.5s;
 }
 
-.navbar li:nth-child(2) {
+.navbar .tomato {
     font-family: 'Russo One', sans-serif;
     font-size: 1.4em;
 }
 
-.navbar li:nth-child(2) a:hover {
+.navbar .tomato a:hover {
     color: rgb(228, 9, 9);
+    font-size: 1.6em;
+    
 }
 
 .navbar li a {
