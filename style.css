@@ -5,45 +5,48 @@ html,body {
 
 body {
     background-color: #04081f;
-    background-image: url(gambar/stardust_@2X.png);
+    background-image: url(https://cdn.discordapp.com/attachments/812623301528125491/812623499687624745/stardust_2X.png);
     color: rgb(245, 242, 239);
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-around;
+#navbar {
     font-size: 1.2em;
     position: fixed;
+    top: 0;
     width: 100%;
-    top: 0%;
     margin-left: -20px;
     z-index: 99;
 }
 
+.nav-list {
+    display: flex;
+    justify-content: space-around;
+}
 
-.navbar li {
+
+#navbar li {
     list-style: none;
     font-family: 'Montserrat', sans-serif;
 }
 
-.navbar li a:hover {
+#navbar li a:hover {
     color: rgb(252, 235, 0);
     font-size: 1.4em;
     transition: 0.5s;
 }
 
-.navbar .tomato {
+#navbar .tomato {
     font-family: 'Russo One', sans-serif;
     font-size: 1.4em;
 }
 
-.navbar .tomato a:hover {
+#navbar .tomato a:hover {
     color: rgb(228, 9, 9);
     font-size: 1.6em;
     
 }
 
-.navbar li a {
+#navbar li a {
     color: inherit;
     text-decoration: none;
 }
@@ -81,7 +84,11 @@ body {
 
 figure {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+}
+
+figure img {
+    margin: auto;
 }
 
 .caption {
@@ -105,4 +112,20 @@ figure {
 
 .socmed i {
     margin-right: 15px;
+    
+}
+
+/* Responsive */
+
+@media screen and (min-width: 800px) {
+    figure {
+        justify-content: space-between;
+        margin-bottom: auto;
+    }
+    figure.kiri {
+        flex-direction: row-reverse;
+    }
+    figure.kanan {
+        flex-direction: row;
+    }
 }
