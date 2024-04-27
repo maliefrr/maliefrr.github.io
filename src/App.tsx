@@ -2,6 +2,10 @@ import {useRef} from 'react';
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardTitle } from './components/ui/card';
+import profilePicture from "@/assets/profile.jpg"
+import ektmPicture from "@/assets/ektm-web.png"
+import gakdaSorumePicture from "@/assets/gakdaSorumeKoltim.png"
+import medqueuePicture from "@/assets/medqueue.png"
 
 
 function App() {
@@ -39,7 +43,7 @@ function App() {
           <h3 className='text-2xl mb-3'>Professional Summary</h3>
           <p className='text-justify'>Experienced Frontend Engineer with a background in academia and technical support roles. Proficient in React.js, React Native, and Express.js. Skilled in explaining concepts, socializing, and public speaking. Notable achievements include developing a medical online queue app and an electronic identity system for students, as well as creating an Android app for a civil service police unit. As an assistant lecturer at Halu Oleo University, successfully taught and mentored students. As a Technical Support Staff at a medical record company, provided effective technical assistance and support.</p>
         </div>
-        <img src="./img/profile.jpg" alt="" className='max-w-[30%] rounded-full'/>
+        <img src={profilePicture} alt="" className='max-w-[30%] rounded-full'/>
       </div>
       <div className='mt-5'>
         {/* <!-- component --> */}
@@ -133,7 +137,7 @@ function App() {
         <div className='grid grid-cols-3 mt-3 gap-3'>
             <Card>
               <CardTitle>
-                <img src="./img/medqueue.png" alt="" />
+                <img src={medqueuePicture} alt="" />
               </CardTitle>
               <CardDescription className='p-4'>
                 <h4 className='text-xl text-black text-center mb-3'>Medqueue</h4>
@@ -142,7 +146,7 @@ function App() {
             </Card>
             <Card>
               <CardTitle>
-                <img src="./img/gakdaSorumeKoltim.png" alt="" />
+                <img src={gakdaSorumePicture} alt="" />
               </CardTitle>
               <CardDescription className='p-4'>
                 <h4 className='text-xl text-black text-center mb-3'>Gakda Sorume Koltim</h4>
@@ -151,7 +155,7 @@ function App() {
             </Card>
             <Card>
               <CardTitle>
-                <img src="./img/ektm-web.png" alt="" />
+                <img src={ektmPicture} alt="" />
               </CardTitle>
               <CardDescription className='p-4'>
                 <h4 className='text-xl text-black text-center mb-3'>E-KTM</h4>
