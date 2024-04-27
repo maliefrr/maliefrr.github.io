@@ -1,36 +1,38 @@
 import {useRef} from 'react';
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
+import { Card, CardDescription, CardTitle } from './components/ui/card';
 
 
 function App() {
   const heroRef = useRef<HTMLDivElement>(null);
   const homeRef = useRef<HTMLDivElement>(null);
   const expRef = useRef<HTMLDivElement>(null);
+  const projectRef = useRef<HTMLDivElement>(null);
 
   const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <div className="overflow-x-hidden overflow-y-hidden">
+      <div className="fixed top-0 z-50 w-full bg-[#171a21] backdrop-blur supports-[backdrop-filter]:bg-[#171a21] px-5">
+        <nav className="flex justify-between items-center">
+          <h1 className="text-xl text-white hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(heroRef)}>Mohamad Alief Rizky R</h1>
+          <ul className="flex justify-around w-[60%] p-4 text-white">
+            <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(homeRef)}>Home</li>
+            <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(expRef)}>Experience</li>
+            <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(projectRef)}>Project</li>
+            <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer">Skills</li>
+            <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer">Contact</li>
+          </ul>
+        </nav>
+      </div>
       <div className="w-screen h-screen flex flex-col items-center justify-center bg-[#171A21]" ref={heroRef}>
         <h4 className="text-3xl">🖐</h4>
         <h3 className="text-[#c7d5e0] text-2xl">I am Mohamad Alief Rizky Ramadhan</h3>
         <h4 className="text-[#c7d5e0] text-3xl">A Frontend Engineer</h4>
         <Separator className="max-w-[20%] mt-3"/>
         <Button className="mt-3 bg-[#2a475e] hover:bg-[#1b2838] duration-300" onClick={() => scrollToRef(homeRef)}>Get To Know Me 👇</Button>
-    </div>
-    <div className="fixed top-0 z-50 w-full bg-[#171a21] backdrop-blur supports-[backdrop-filter]:bg-[#171a21] px-5">
-      <nav className="flex justify-between items-center">
-        <h1 className="text-xl text-white hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(heroRef)}>Mohamad Alief Rizky R</h1>
-        <ul className="flex justify-around w-[60%] p-4 text-white">
-          <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(homeRef)}>Home</li>
-          <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(expRef)}>Experience</li>
-          <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer">Project</li>
-          <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer">Skills</li>
-          <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer">Contact</li>
-        </ul>
-      </nav>
     </div>
       <div className="flex p-5 justify-around items-center mt-10 h-screen" ref={homeRef}>
         <div className='max-w-[40%]'>
@@ -121,14 +123,44 @@ function App() {
                     </div>
                   </div>
                 </div>
-
-
-
               </div>
-
             </div>
           </div>
       </div>
+          {/* end of timeline */}
+      <div className='mt-5 h-screen flex flex-col justify-center p-4' ref={projectRef}>
+        <h1 className="text-3xl text-center mb-3">Projects</h1>
+        <div className='grid grid-cols-3 mt-3 gap-3'>
+            <Card>
+              <CardTitle>
+                <img src="./img/medqueue.png" alt="" />
+              </CardTitle>
+              <CardDescription className='p-4'>
+                <h4 className='text-xl text-black text-center mb-3'>Medqueue</h4>
+                <p className='text-justify'>Medqueue is a medical online queue service. Medqueue offers seamless appointment scheduling, eliminating the frustration of long wait times and cumbersome phone calls. With Medqueue, users can effortlessly book appointments online from anywhere, at any time. The technology stack that I use are Typescript, React.JS, Tailwind CSS, Shadcn UI. See the source on <a href="https://github.com/Medqueue-Alta/Medqueue-FE" target='_blank' className='cursor-pointer underline'>Github</a> </p>
+              </CardDescription>
+            </Card>
+            <Card>
+              <CardTitle>
+                <img src="./img/gakdaSorumeKoltim.png" alt="" />
+              </CardTitle>
+              <CardDescription className='p-4'>
+                <h4 className='text-xl text-black text-center mb-3'>Gakda Sorume Koltim</h4>
+                <p className='text-justify'>Gakda Sorume Koltim is a crucial tool for East Kolaka citizens to report local law violations, enabling the Civil Police Unit to take prompt action on each citizen's report. Developed using TypeScript and React Native, this app ensures seamless reporting and swift response to community concerns. Visit the <a  href="https://play.google.com/store/apps/details?id=com.anonymous.gakdaSorumeKoltim" target='_blank' className='cursor-pointer underline'>Google Play Store</a>  to explore the app's functionalities firsthand. </p>
+              </CardDescription>
+            </Card>
+            <Card>
+              <CardTitle>
+                <img src="./img/ektm-web.png" alt="" />
+              </CardTitle>
+              <CardDescription className='p-4'>
+                <h4 className='text-xl text-black text-center mb-3'>E-KTM</h4>
+                <p className='text-justify'>EKTM (Electronic Student Identity Card) addresses the challenges faced by university administrations, particularly in reducing wait times for lost or replacement student cards. Leveraging a comprehensive technology stack comprising JavaScript, Express.js, MongoDB, React.js, React Native, and Tailwind CSS, EKTM streamlines the process of issuing and managing student identity cards. This innovative solution ensures efficient and seamless card management, empowering students and administrators alike. Explore the source code for the <a  href="https://github.com/maliefrr/ektm" target='_blank' className='cursor-pointer underline'>API</a> , <a  href="https://github.com/maliefrr/ektmFrontend" target='_blank' className='cursor-pointer underline'>Frontend</a>, and the<a  href="https://github.com/maliefrr/ektmApp" target='_blank' className='cursor-pointer underline'> Android</a> </p>
+              </CardDescription>
+            </Card>
+        </div>
+      </div>
+      {/* End of project section */}
     </div>
   )
 }
