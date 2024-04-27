@@ -6,6 +6,14 @@ import profilePicture from "@/assets/profile.jpg"
 import ektmPicture from "@/assets/ektm-web.png"
 import gakdaSorumePicture from "@/assets/gakdaSorumeKoltim.png"
 import medqueuePicture from "@/assets/medqueue.png"
+import htmlLogo from "@/assets/html5.png"
+import cssLogo from "@/assets/css3.svg"
+import jsLogo from "@/assets/javascript.png"
+import nodeJSLogo from "@/assets/nodejs.png"
+import tsLogo from "@/assets/Typescript_logo_2020.svg.png"
+import tailwindLogo from "@/assets/Tailwindpng.png"
+import reactLogo from "@/assets/react.svg"
+import reactNativeLogo from "@/assets/reactNative.png"
 
 
 function App() {
@@ -165,6 +173,19 @@ function App() {
         </div>
       </div>
       {/* End of project section */}
+      <div className='h-screen flex flex-col items-center bg-[#1b2838] p-4 justify-center'>
+        <h1 className="text-center text-3xl mb-5 text-white">Skills</h1>
+        <div className="grid grid-cols-4 gap-5 items-center">
+          <img src={htmlLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
+          <img src={cssLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
+          <img src={jsLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
+          <img src={tsLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
+          <img src={tailwindLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
+          <img src={nodeJSLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
+          <img src={reactLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
+          <img src={reactNativeLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
+        </div>
+      </div>
     </div>
   )
 }
