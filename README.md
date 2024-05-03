@@ -1,30 +1,22 @@
-# React + TypeScript + Vite
+### Hello 👋
+### Welcome to my github pages
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
+<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGQ0dHExaXh5d3E4OGt3eTNxM3p1aWQ4bTE0aTU0ejM5YXk4ZDA3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sfEQeNSZWhMw5SnjoI/giphy.gif" alt="Sakura Miko Wave">
+</div>
 
-Currently, two official plugins are available:
+This repository is made for my web portfolio project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### What tech stack that i use in this project?
+<div align="center">
+  <img src="https://img.shields.io/badge/type_script-007ACC?logo=typescript&logoColor=FFF&style=for-the-badge" alt="Type Script Badge">
+  <img src="https://img.shields.io/badge/react-61DBFB?logo=react&logoColor=000&style=for-the-badge" alt="React Badge">
+</div>
 
-## Expanding the ESLint configuration
+#### Get in touch with me 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+<div align="center">
+  [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=fff&style=for-the-badge)](https://www.linkedin.com/in/maliefrr/)
+  [![Gmail Badge](https://img.shields.io/badge/Gmail-EA4335?logo=gmail&logoColor=fff&style=for-the-badge)](https://mail.google.com/mail/?view=cm&fs=1&to=maliefrr14@gmail.com)
+  [![Instagram Badge](https://img.shields.io/badge/Instagram-E4405F?logo=instagram&logoColor=fff&style=for-the-badge)](https://instagram.com/maliefrr)
+</div>
