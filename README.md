@@ -15,8 +15,6 @@ This repository is made for my web portfolio project
 
 #### Get in touch with me 
 
-<div align="center">
-  [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=fff&style=for-the-badge)](https://www.linkedin.com/in/maliefrr/)
-  [![Gmail Badge](https://img.shields.io/badge/Gmail-EA4335?logo=gmail&logoColor=fff&style=for-the-badge)](https://mail.google.com/mail/?view=cm&fs=1&to=maliefrr14@gmail.com)
-  [![Instagram Badge](https://img.shields.io/badge/Instagram-E4405F?logo=instagram&logoColor=fff&style=for-the-badge)](https://instagram.com/maliefrr)
-</div>
+[![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=fffstyle=for-the-badge)](https://www.linkedin.com/in/maliefrr/)
+[![Gmail Badge](https://img.shields.io/badge/Gmail-EA4335?logo=gmail&logoColor=fffstyle=for-the-badge)](https://mail.google.com/mail/?view=cm&fs=1&to=maliefrr14@gmail.com)
+[![Instagram Badge](https://img.shields.io/badge/Instagram-E4405F?logo=instagram&logoColor=fffstyle=for-the-badge)](https://instagram.com/maliefrr)
