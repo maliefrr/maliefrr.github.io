@@ -17,6 +17,7 @@ import reactNativeLogo from "@/assets/reactNative.png"
 import mailIcon from "@/assets/email.svg"
 import locationIcon from "@/assets/location-pin.svg"
 import phoneIcon from "@/assets/phone-call.svg"
+import { summarry, workExperince } from './constant';
 
 
 function App() {
@@ -51,10 +52,10 @@ function App() {
         <Separator className="max-w-[20%] mt-3"/>
         <Button className="mt-3 bg-[#2a475e] hover:bg-[#1b2838] duration-300" onClick={() => scrollToRef(homeRef)}>Get To Know Me 👇</Button>
     </div>
-      <div className="flex p-5 justify-around items-center mt-10 h-screen" ref={homeRef}>
-        <div className='max-w-[40%]'>
-          <h3 className='text-2xl mb-3'>Professional Summary</h3>
-          <p className='text-justify'>Experienced Frontend Engineer with a background in academia and technical support roles. Proficient in React.js, React Native, and Express.js. Skilled in explaining concepts, socializing, and public speaking. Notable achievements include developing a medical online queue app and an electronic identity system for students, as well as creating an Android app for a civil service police unit. As an assistant lecturer at Halu Oleo University, successfully taught and mentored students. As a Technical Support Staff at a medical record company, provided effective technical assistance and support.</p>
+      <div className="flex flex-col-reverse lg:flex-row p-5 justify-end gap-4 lg:justify-around items-center mt-10 h-screen" ref={homeRef}>
+        <div className='lg:max-w-[40%]'>
+          <h3 className='text-lg lg:text-2xl mb-3'>Professional Summary</h3>
+          <p className='text-sm lg:text-lg text-justify'>{summarry}</p>
         </div>
         <img src={profilePicture} alt="" className='max-w-[30%] rounded-full'/>
       </div>
@@ -70,76 +71,28 @@ function App() {
                 <div className="hidden sm:block w-1 bg-[#2a475e] absolute h-full left-1/2 transform -translate-x-1/2"></div>
 
                 {/* <!-- Left section, set by justify-start and sm:pr-8 --> */}
-                <div className="mt-6 sm:mt-0 sm:mb-12">
-                  <div className="flex flex-col sm:flex-row items-center">
-                    <div className="flex justify-start w-full mx-auto items-center">
-                      <div className="w-full sm:w-1/2 sm:pr-8">
-                        <div className="p-5 bg-white rounded shadow">
-                          <h3 className='text-xl'>Technical Support Staff</h3>
-                          <h4 className='text'>PT Profaskes Softech Indonesia</h4>
-                          <h5>Fulltime</h5>
-                          <h6 className='text-slate-400'>Jan 2023 - Present</h6>
+                {
+                  workExperince.slice().reverse().map((item,index) => {
+                    return (
+                    <div className="mt-6 sm:mt-0 sm:mb-12">
+                      <div className="flex flex-col sm:flex-row items-center">
+                        <div className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'} w-full mx-auto items-center`}>
+                          <div className={`w-full sm:w-1/2 sm:${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                            <div className="p-5 bg-white rounded shadow">
+                              <h3 className='text-xl'>{item.jobTitle}</h3>
+                              <h4 className='text'>{item.company}</h4>
+                              <h5>{item.status}</h5>
+                              <h6 className='text-slate-400'>{item.startDate} - {item.endDate}</h6>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="rounded-full bg-[#1b2838] border-white border-4 w-8 h-8 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">
                         </div>
                       </div>
                     </div>
-                    <div className="rounded-full bg-[#1b2838] border-white border-4 w-8 h-8 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">
-                    </div>
-                  </div>
-                </div>
-
-                {/* <!-- Right section, set by justify-end and sm:pl-8 --> */}
-                <div className="mt-6 sm:mt-0 sm:mb-12">
-                  <div className="flex flex-col sm:flex-row items-center">
-                    <div className="flex justify-end w-full mx-auto items-center">
-                      <div className="w-full sm:w-1/2 sm:pl-8">
-                        <div className="p-4 bg-white rounded shadow">
-                          <h3 className='text-xl'>Android Developer</h3>
-                          <h4 className='text'>Satpol PP Kolaka Timur</h4>
-                          <h5>Freelance</h5>
-                          <h6 className='text-slate-400'>Nov 2023 - Jan 2024</h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="rounded-full bg-[#1b2838] border-white border-4 w-8 h-8 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">
-                    </div>
-                  </div>
-                </div>
-
-                {/* <!-- Left section, set by justify-start and sm:pr-8 --> */}
-                <div className="mt-6 sm:mt-0 sm:mb-12">
-                  <div className="flex flex-col sm:flex-row items-center">
-                    <div className="flex justify-start w-full mx-auto items-center">
-                      <div className="w-full sm:w-1/2 sm:pr-8">
-                        <div className="p-4 bg-white rounded shadow">
-                          <h3 className='text-xl'>Junior ERP Support</h3>
-                          <h4 className='text'>PT Hashmicro Solusi Indonesia</h4>
-                          <h5>Internship</h5>
-                          <h6 className='text-slate-400'>Feb 2022 - Jun 2022</h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="rounded-full bg-[#1b2838] border-white border-4 w-8 h-8 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">
-                    </div>
-                  </div>
-                </div>
-
-                {/* <!-- Right section, set by justify-end and sm:pl-8 --> */}
-                <div className="mt-6 sm:mt-0">
-                  <div className="flex flex-col sm:flex-row items-center">
-                    <div className="flex justify-end w-full mx-auto items-center">
-                      <div className="w-full sm:w-1/2 sm:pl-8">
-                        <div className="p-4 bg-white rounded shadow">
-                          <h3 className='text-xl'>Assistant Lecturer</h3>
-                          <h4 className='text'>Halu Oleo University</h4>
-                          <h5>Parttime</h5>
-                          <h6 className='text-slate-400'>Jan 2020 - Jun 2022</h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="rounded-full bg-[#1b2838] border-white border-4 w-8 h-8 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">
-                    </div>
-                  </div>
-                </div>
+                    )
+                  })
+                }
               </div>
             </div>
           </div>
@@ -147,7 +100,7 @@ function App() {
           {/* end of timeline */}
       <div className='mt-5 h-screen flex flex-col justify-center p-4' ref={projectRef}>
         <h1 className="text-3xl text-center mb-3">Projects</h1>
-        <div className='grid grid-cols-3 mt-3 gap-3'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-3 gap-3'>
             <Card>
               <CardTitle>
                 <img src={medqueuePicture} alt="" />
