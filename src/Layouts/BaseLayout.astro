@@ -1,0 +1,43 @@
+---
+import { SEO } from 'astro-seo';
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/61228297?v=4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="keywords" content="software engineer, react, react native, javascript, typescript, node.js, web development, portfolio, Alief, Moh Alief Rizky Ramadhan, Tomato" />
+  </head>
+  <body>
+    <SEO
+      title={title}
+      description="Portfolio of Mohamad Alief Rizky Ramadhan, a Software Engineer specializing in React, React Native, Node.js, and full-stack web development."
+      canonical="https://maliefrr.github.io/"
+      openGraph={{
+        basic: {
+          title: title,
+          type: 'website',
+          image: 'https://avatars.githubusercontent.com/u/61228297?v=4',
+          url: 'https://maliefrr.github.io/',
+        },
+        optional: {
+          description: 'Portfolio of Mohamad Alief Rizky Ramadhan, a Software Engineer specializing in React, React Native, Node.js, and full-stack web development.',
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        title: title,
+        description: 'Portfolio of Mohamad Alief Rizky Ramadhan, a Software Engineer specializing in React, React Native, Node.js, and full-stack web development.',
+        image: 'https://avatars.githubusercontent.com/u/61228297?v=4',
+      }}
+    />
+    <slot />
+  </body>
+</html>
