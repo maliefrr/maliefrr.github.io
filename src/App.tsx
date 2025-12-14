@@ -38,7 +38,7 @@ function App() {
       <div className="w-screen h-screen flex flex-col items-center justify-center bg-[#171A21]" ref={heroRef} id='hero'>
         <h4 className="text-3xl">🖐</h4>
         <h3 className="text-[#c7d5e0] text-2xl">I am Mohamad Alief Rizky Ramadhan</h3>
-        <h4 className="text-[#c7d5e0] text-3xl">A Frontend Engineer</h4>
+        <h4 className="text-[#c7d5e0] text-3xl">A Software Engineer</h4>
         <Separator className="max-w-[20%] mt-3"/>
         <Button className="mt-3 bg-[#2a475e] hover:bg-[#1b2838] duration-300" onClick={() => scrollToRef(homeRef)}>Get To Know Me 👇</Button>
     </div>
