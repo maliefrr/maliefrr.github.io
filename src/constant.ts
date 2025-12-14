@@ -10,7 +10,7 @@ import tailwindLogo from "@/assets/Tailwindpng.png"
 import reactLogo from "@/assets/react.svg"
 import reactNativeLogo from "@/assets/reactNative.png"
 
-export const summarry = 'Experienced Frontend Developer with a strong foundation in academia, freelance development, and technical support. Proficient in React.js, React Native, and Express.js, with a focus on building responsive, user-friendly web applications. Known for clear communication, mentoring, and cross-functional collaboration. Past projects include a medical online queue app, an Android app for a civil service unit, and an electronic student identity system. Former assistant lecturer at Halu Oleo University and technical support staff in the health tech industry, bringing a unique blend of technical skill and user-centric thinking.'
+export const summarry = 'Experienced Software Engineer with a strong foundation in academia, freelance development, and technical support. Proficient in React.js, React Native, and Express.js, with a focus on building responsive, user-friendly web applications. Known for clear communication, mentoring, and cross-functional collaboration. Past projects include a medical online queue app, an Android app for a civil service unit, and an electronic student identity system. Former assistant lecturer at Halu Oleo University and technical support staff in the health tech industry, bringing a unique blend of technical skill and user-centric thinking.'
 
 export const workExperince = [
     {
