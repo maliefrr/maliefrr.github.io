@@ -3,21 +3,11 @@ import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardTitle } from './components/ui/card';
 import profilePicture from "@/assets/profile.jpg"
-import ektmPicture from "@/assets/ektm-web.png"
-import gakdaSorumePicture from "@/assets/gakdaSorumeKoltim.png"
-import medqueuePicture from "@/assets/medqueue.png"
-import htmlLogo from "@/assets/html5.png"
-import cssLogo from "@/assets/css3.svg"
-import jsLogo from "@/assets/javascript.png"
-import nodeJSLogo from "@/assets/nodejs.png"
-import tsLogo from "@/assets/Typescript_logo_2020.svg.png"
-import tailwindLogo from "@/assets/Tailwindpng.png"
-import reactLogo from "@/assets/react.svg"
-import reactNativeLogo from "@/assets/reactNative.png"
 import mailIcon from "@/assets/email.svg"
 import locationIcon from "@/assets/location-pin.svg"
 import phoneIcon from "@/assets/phone-call.svg"
-import { summarry, workExperince } from './constant';
+import { summarry, workExperince, projects, skills } from './constant';
+import { Navbar } from './components/Navbar';
 
 
 function App() {
@@ -28,31 +18,31 @@ function App() {
   const skillsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
-  const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToRef = (ref: React.RefObject<HTMLElement>) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
+  
   return (
     <div className="overflow-x-hidden overflow-y-hidden">
       <div className="fixed top-0 z-50 w-full bg-[#171a21] backdrop-blur supports-[backdrop-filter]:bg-[#171a21] px-5">
-        <nav className="flex justify-between items-center">
-          <h1 className="text-xl text-white hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(heroRef)}>Mohamad Alief Rizky R</h1>
-          <ul className="flex justify-around w-[60%] p-4 text-white">
-            <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(homeRef)}>Home</li>
-            <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(expRef)}>Experience</li>
-            <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(projectRef)}>Project</li>
-            <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(skillsRef)}>Skills</li>
-            <li className="hover:text-[#c7d5e0] duration-300 cursor-pointer" onClick={() => scrollToRef(contactRef)}>Contact</li>
-          </ul>
-        </nav>
+        <Navbar   
+        scrollToRef={scrollToRef}
+        heroRef={heroRef}
+        homeRef={homeRef}
+        expRef={expRef}
+        projectRef={projectRef}
+        skillsRef={skillsRef}
+        contactRef={contactRef}
+        />
       </div>
-      <div className="w-screen h-screen flex flex-col items-center justify-center bg-[#171A21]" ref={heroRef}>
+      <div className="w-screen h-screen flex flex-col items-center justify-center bg-[#171A21]" ref={heroRef} id='hero'>
         <h4 className="text-3xl">🖐</h4>
         <h3 className="text-[#c7d5e0] text-2xl">I am Mohamad Alief Rizky Ramadhan</h3>
         <h4 className="text-[#c7d5e0] text-3xl">A Frontend Engineer</h4>
         <Separator className="max-w-[20%] mt-3"/>
         <Button className="mt-3 bg-[#2a475e] hover:bg-[#1b2838] duration-300" onClick={() => scrollToRef(homeRef)}>Get To Know Me 👇</Button>
     </div>
-      <div className="flex flex-col-reverse lg:flex-row p-5 justify-end gap-4 lg:justify-around items-center mt-10 h-screen" ref={homeRef}>
+      <div className="flex flex-col-reverse lg:flex-row p-5 justify-end gap-4 lg:justify-around items-center mt-10 h-screen" ref={homeRef} id='home'>
         <div className='lg:max-w-[40%]'>
           <h3 className='text-lg lg:text-2xl mb-3'>Professional Summary</h3>
           <p className='text-sm lg:text-lg text-justify'>{summarry}</p>
@@ -61,7 +51,7 @@ function App() {
       </div>
       <div className='mt-5'>
         {/* <!-- component --> */}
-          <div className="min-h-screen bg-[#1b2838] py-6 flex flex-col justify-center sm:py-12" ref={expRef}>
+          <div className="min-h-screen bg-[#1b2838] py-6 flex flex-col justify-center sm:py-12" ref={expRef} id='experience'>
             <h1 className='text-center text-3xl mb-5 text-white'>Work Experience</h1>
             <div className="py-3 sm:max-w-xl sm:mx-auto w-full px-2 sm:px-0">
 
@@ -98,50 +88,37 @@ function App() {
           </div>
       </div>
           {/* end of timeline */}
-      <div className='mt-5 h-screen flex flex-col justify-center p-4' ref={projectRef}>
+      <div className='mt-10 min-h-screen flex flex-col justify-center p-4 pt-16' ref={projectRef} id='projects'>
         <h1 className="text-3xl text-center mb-3">Projects</h1>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-3 gap-3'>
-            <Card>
-              <CardTitle>
-                <img src={medqueuePicture} alt="" />
-              </CardTitle>
-              <CardDescription className='p-4'>
-                <h4 className='text-xl text-black text-center mb-3'>Medqueue</h4>
-                <p className='text-justify'>Medqueue is a medical online queue service. Medqueue offers seamless appointment scheduling, eliminating the frustration of long wait times and cumbersome phone calls. With Medqueue, users can effortlessly book appointments online from anywhere, at any time. The technology stack that I use are Typescript, React.JS, Tailwind CSS, Shadcn UI. See the source on <a href="https://github.com/Medqueue-Alta/Medqueue-FE" target='_blank' className='cursor-pointer underline'>Github</a> </p>
-              </CardDescription>
-            </Card>
-            <Card>
-              <CardTitle>
-                <img src={gakdaSorumePicture} alt="" />
-              </CardTitle>
-              <CardDescription className='p-4'>
-                <h4 className='text-xl text-black text-center mb-3'>Gakda Sorume Koltim</h4>
-                <p className='text-justify'>Gakda Sorume Koltim is a crucial tool for East Kolaka citizens to report local law violations, enabling the Civil Police Unit to take prompt action on each citizen's report. Developed using TypeScript and React Native, this app ensures seamless reporting and swift response to community concerns. Visit the <a  href="https://play.google.com/store/apps/details?id=com.anonymous.gakdaSorumeKoltim" target='_blank' className='cursor-pointer underline'>Google Play Store</a>  to explore the app's functionalities firsthand. </p>
-              </CardDescription>
-            </Card>
-            <Card>
-              <CardTitle>
-                <img src={ektmPicture} alt="" />
-              </CardTitle>
-              <CardDescription className='p-4'>
-                <h4 className='text-xl text-black text-center mb-3'>E-KTM</h4>
-                <p className='text-justify'>EKTM (Electronic Student Identity Card) addresses the challenges faced by university administrations, particularly in reducing wait times for lost or replacement student cards. Leveraging a comprehensive technology stack comprising JavaScript, Express.js, MongoDB, React.js, React Native, and Tailwind CSS, EKTM streamlines the process of issuing and managing student identity cards. This innovative solution ensures efficient and seamless card management, empowering students and administrators alike. Explore the source code for the <a  href="https://github.com/maliefrr/ektm" target='_blank' className='cursor-pointer underline'>API</a> , <a  href="https://github.com/maliefrr/ektmFrontend" target='_blank' className='cursor-pointer underline'>Frontend</a>, and the<a  href="https://github.com/maliefrr/ektmApp" target='_blank' className='cursor-pointer underline'> Android</a> </p>
-              </CardDescription>
-            </Card>
+            {projects.map((project) => (
+                <Card key={project.title}>
+                    <CardTitle>
+                        <img src={project.image} alt="" />
+                    </CardTitle>
+                    <CardDescription className='p-4'>
+                        <h4 className='text-xl text-black text-center mb-3'>{project.title}</h4>
+                        <p className='text-justify'>
+                            {project.description}
+                            {project.links.map((link, index) => (
+                                <span key={link.url}>
+                                    <a href={link.url} target='_blank' className='cursor-pointer underline'>{link.text}</a>
+                                    {index < project.links.length - 1 ? ', ' : ''}
+                                </span>
+                            ))}
+                        </p>
+                    </CardDescription>
+                </Card>
+            ))}
         </div>
       </div>
       {/* End of project section */}
       <div className='h-screen flex flex-col items-center bg-[#1b2838] p-4 justify-center' ref={skillsRef}>
         <h1 className="text-center text-3xl mb-5 text-white">Skills</h1>
         <div className="grid grid-cols-4 gap-5 items-center">
-          <img src={htmlLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
-          <img src={cssLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
-          <img src={jsLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
-          <img src={tsLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
-          <img src={tailwindLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
-          <img src={nodeJSLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
-          <img src={reactLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
-          <img src={reactNativeLogo} alt="" width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
+          {skills.map((skill) => (
+            <img key={skill.alt} src={skill.image} alt={skill.alt} width={150} className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 duration-300'/>
+          ))}
         </div>
       </div>
       {/* end of skills section */}
