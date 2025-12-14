@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 
 interface NavbarProps {
-  scrollToRef: (ref: React.RefObject<HTMLElement>) => void;
-  heroRef: React.RefObject<HTMLElement>;
-  homeRef: React.RefObject<HTMLElement>;
-  expRef: React.RefObject<HTMLElement>;
-  projectRef: React.RefObject<HTMLElement>;
-  skillsRef: React.RefObject<HTMLElement>;
-  contactRef: React.RefObject<HTMLElement>;
+  scrollToRef: (ref: React.RefObject<HTMLDivElement | null>) => void;
+  heroRef: React.RefObject<HTMLDivElement | null>;
+  homeRef: React.RefObject<HTMLDivElement | null>;
+  expRef: React.RefObject<HTMLDivElement | null>;
+  projectRef: React.RefObject<HTMLDivElement | null>;
+  skillsRef: React.RefObject<HTMLDivElement | null>;
+  contactRef: React.RefObject<HTMLDivElement | null>;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -26,7 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     setMenuOpen(prev => !prev);
   };
 
-  const handleItemClick = (ref: React.RefObject<HTMLElement>) => {
+  const handleItemClick = (ref: React.RefObject<HTMLDivElement | null>) => {
     scrollToRef(ref);
     setMenuOpen(false);
   };
@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         className="text-xl text-white hover:text-[#c7d5e0] duration-300 cursor-pointer"
         onClick={() => handleItemClick(heroRef)}
       >
-        Mohamad Alief Rizky R
+        Moh Alief Rizky R
       </h1>
 
       {/* Desktop menu */}
