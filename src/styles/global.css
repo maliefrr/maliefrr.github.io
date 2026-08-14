@@ -136,6 +136,46 @@
     }
   }
 
+  /*
+    Entry animation for the hero. CSS rather than Motion on purpose: it runs at
+    first paint, so the content is never hidden waiting on hydration. The
+    reduced-motion block above collapses it to an instant final state.
+  */
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .rise {
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /*
+    Theme toggle icons. Swapped by attribute rather than by React state, so the
+    server and client render identical markup and hydration cannot mismatch.
+  */
+  .theme-icon-dark,
+  .theme-icon-light {
+    grid-area: 1 / 1;
+  }
+
+  :root:not([data-theme='light']) .theme-icon-light,
+  [data-theme='light'] .theme-icon-dark {
+    display: none;
+  }
+
+  /* Tilt driven by custom properties set in script; defaults are flat. */
+  .tilt {
+    transform: perspective(1200px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
   .starfield {
     background-image:
       radial-gradient(1.2px 1.2px at 12% 18%, var(--star), transparent 60%),

@@ -113,7 +113,9 @@ const personSchema = {
     </a>
 
     <header class="fixed inset-x-0 top-3 z-40 px-3 sm:px-4">
-      <Nav client:idle brand={site.shortName} items={navItems} />
+      {/* client:load, not client:idle: the theme toggle sits above the fold and
+          must not sit there looking clickable while its handler is missing. */}
+      <Nav client:load brand={site.shortName} items={navItems} />
     </header>
 
     <main>

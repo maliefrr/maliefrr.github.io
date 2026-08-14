@@ -1,6 +1,5 @@
 ---
 import { site } from '../../data/site';
-import { HeroPanel } from '../HeroPanel';
 import { Nebula } from '../Nebula';
 ---
 
@@ -19,8 +18,13 @@ import { Nebula } from '../Nebula';
     <Nebula client:visible />
   </div>
 
-  <div class="mx-auto w-full max-w-[1400px]">
-    <HeroPanel client:load>
+  <div class="rise mx-auto w-full max-w-[1400px]">
+    <!--
+      Plain markup, deliberately not a framework island. The hero copy is the
+      most important content on the page and must never depend on hydration to
+      exist. The tilt below is progressive enhancement over static HTML.
+    -->
+    <div class="tilt glass w-full max-w-2xl p-7 sm:p-10" data-tilt>
       <h1 class="text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
         {site.name}
       </h1>
@@ -43,6 +47,33 @@ import { Nebula } from '../Nebula';
           Contact
         </a>
       </div>
-    </HeroPanel>
+    </div>
   </div>
 </section>
+
+<script>
+  // Pointer tilt. Writes two CSS custom properties; the transform itself lives
+  // in CSS, so a scripting failure degrades to a flat panel, never a blank one.
+  const MAX_TILT_DEGREES = 5;
+
+  const panel = document.querySelector<HTMLElement>('[data-tilt]');
+  const allowsMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (panel && allowsMotion) {
+    const setTilt = (x: number, y: number) => {
+      panel.style.setProperty('--tilt-y', `${x * MAX_TILT_DEGREES}deg`);
+      panel.style.setProperty('--tilt-x', `${-y * MAX_TILT_DEGREES}deg`);
+    };
+
+    panel.addEventListener('pointermove', (event) => {
+      if (event.pointerType !== 'mouse') return;
+      const bounds = panel.getBoundingClientRect();
+      setTilt(
+        (event.clientX - bounds.left) / bounds.width - 0.5,
+        (event.clientY - bounds.top) / bounds.height - 0.5
+      );
+    });
+
+    panel.addEventListener('pointerleave', () => setTilt(0, 0));
+  }
+</script>

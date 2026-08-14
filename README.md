@@ -20,11 +20,20 @@ Astro renders the whole page statically. React hydrates only two islands, the
 nav and the hero panel, and Three.js lazy-loads the hero nebula on desktop.
 
 ```bash
-npm install     # install dependencies
-npm run dev     # local dev server
-npm run check   # astro check (types + templates)
-npm run build   # static build into dist/
+npm install      # install dependencies
+npm run dev      # local dev server
+npm run check    # astro check (types + templates)
+npm test         # Playwright suite against the production build
+npm run test:dev # same suite against astro dev
+npm run build    # static build into dist/
 ```
+
+Requires Node 20 or newer (Tailwind v4's native binding refuses anything older).
+
+`npm test` builds the site and drives system Chrome, so no browser download is
+needed. Run `npm run test:dev` too when touching a React island: only the dev
+build reports React hydration mismatches, which the production build silently
+patches over.
 
 Content lives in `src/content/` (experience and projects as markdown
 collections) and `src/data/` (site details and skills). `/llms.txt` and

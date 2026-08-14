@@ -17,14 +17,8 @@ interface NavProps {
 
 type Theme = 'light' | 'dark';
 
-function readTheme(): Theme {
-  if (typeof document === 'undefined') return 'dark';
-  return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
-}
-
 export function Nav({ brand, items }: NavProps) {
   const [open, setOpen] = useState(false);
-  const [theme, setTheme] = useState<Theme>(readTheme);
   const [activeId, setActiveId] = useState<string>('');
   const reduce = useReducedMotion();
 
@@ -70,15 +64,22 @@ export function Nav({ brand, items }: NavProps) {
     };
   }, [open]);
 
+  /**
+   * The current theme is read from the DOM at click time rather than held in
+   * React state. SSR cannot know the visitor's preference, so any themed render
+   * output would mismatch during hydration. The icons swap via CSS instead.
+   */
   const toggleTheme = () => {
-    const next: Theme = theme === 'dark' ? 'light' : 'dark';
+    const current: Theme =
+      document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+    const next: Theme = current === 'dark' ? 'light' : 'dark';
+
     document.documentElement.dataset.theme = next;
     try {
       localStorage.setItem('theme', next);
     } catch {
       // Private mode or blocked storage: the toggle still works for this visit.
     }
-    setTheme(next);
   };
 
   const linkClass = (href: string) =>
@@ -118,14 +119,16 @@ export function Nav({ brand, items }: NavProps) {
           <button
             type="button"
             onClick={toggleTheme}
-            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            aria-label="Toggle colour theme"
             className="grid h-10 w-10 place-items-center rounded-glass text-muted transition-colors duration-200 hover:text-accent active:scale-[0.96]"
           >
-            {theme === 'dark' ? (
-              <SunIcon size={ICON_SIZE} weight={ICON_WEIGHT} />
-            ) : (
-              <MoonStarsIcon size={ICON_SIZE} weight={ICON_WEIGHT} />
-            )}
+            {/* Both icons render; CSS shows the one matching [data-theme]. */}
+            <SunIcon size={ICON_SIZE} weight={ICON_WEIGHT} className="theme-icon-dark" />
+            <MoonStarsIcon
+              size={ICON_SIZE}
+              weight={ICON_WEIGHT}
+              className="theme-icon-light col-start-1 row-start-1"
+            />
           </button>
 
           <button

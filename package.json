@@ -9,7 +9,9 @@
     "build": "astro build",
     "check": "astro check",
     "preview": "astro preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test": "playwright test",
+    "test:dev": "E2E_DEV=1 playwright test"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@playwright/test": "^1.62.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@types/three": "^0.185.4",
