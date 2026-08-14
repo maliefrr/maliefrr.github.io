@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+
+const MONTHS = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+/** "Jan 2020" -> absolute month index. "Present" resolves to the build date. */
+function toMonthIndex(value: string): number {
+  const now = new Date();
+  if (value === 'Present') return now.getFullYear() * 12 + now.getMonth();
+
+  const [month, year] = value.split(' ');
+  const monthIndex = MONTHS.indexOf(month ?? '');
+  return Number(year) * 12 + (monthIndex === -1 ? 0 : monthIndex);
+}
+
+function monthsToLabel(count: number): string {
+  const years = Math.floor(count / 12);
+  const months = count % 12;
+  const parts = [];
+  if (years > 0) parts.push(`${years} yr${years > 1 ? 's' : ''}`);
+  if (months > 0) parts.push(`${months} mo`);
+  return parts.join(' ') || '1 mo';
+}
+
+const entries = (await getCollection('experience')).sort((a, b) => b.data.order - a.data.order);
+
+const rows = entries.map((entry) => ({
+  ...entry.data,
+  isCurrent: entry.data.end === 'Present',
+  duration: monthsToLabel(
+    Math.max(toMonthIndex(entry.data.end) - toMonthIndex(entry.data.start), 1)
+  ),
+}));
+
+const totalRoles = rows.length;
+const employers = new Set(rows.map((row) => row.company)).size;
+---
+
+<section id="experience" class="relative bg-bg-deep px-4 py-24 sm:px-6 sm:py-32">
+  <div class="mx-auto max-w-[1400px]">
+    <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Work experience</h2>
+    <p class="mt-4 max-w-[55ch] text-base leading-relaxed text-muted">
+      {totalRoles} roles across {employers} organisations, in teaching, support and product work.
+    </p>
+
+    <ol class="mt-12 divide-y divide-line/40">
+      {
+        rows.map((row) => (
+          <li class="flex flex-col gap-2 py-6 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+            <div class="min-w-0">
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h3 class="text-lg font-medium leading-snug sm:text-xl">{row.role}</h3>
+                {row.isCurrent && (
+                  <span class="rounded-glass border border-accent/50 px-2 py-0.5 font-mono text-[10px] text-accent">
+                    current
+                  </span>
+                )}
+              </div>
+              <p class="mt-1 text-sm text-muted sm:text-base">
+                {row.company}
+                <span class="text-line"> / </span>
+                {row.status}
+              </p>
+            </div>
+
+            <p
+              class:list={[
+                'shrink-0 font-mono text-[11px] sm:text-right',
+                row.isCurrent ? 'text-accent' : 'text-muted',
+              ]}
+            >
+              {row.start} - {row.end}
+              <span class="text-line"> / </span>
+              {row.duration}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

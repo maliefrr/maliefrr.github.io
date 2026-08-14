@@ -1,43 +1,123 @@
 ---
 import { SEO } from 'astro-seo';
+import '@fontsource-variable/geist';
+import '@fontsource-variable/geist-mono';
+import '../styles/global.css';
+import { site, navItems } from '../data/site';
+import { Nav } from '../components/Nav';
+
 export interface Props {
-  title: string;
+  title?: string;
 }
 
-const { title } = Astro.props;
+const { title = site.title } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: site.name,
+    jobTitle: site.jobTitle,
+    url: site.url,
+    image: site.avatar,
+    email: `mailto:${site.contact.email}`,
+    description: site.summary,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: site.contact.locality,
+      addressCountry: site.contact.country,
+    },
+    alumniOf: {
+      '@type': 'CollegeOrUniversity',
+      name: site.alumniOf,
+    },
+    knowsAbout: [
+      'HTML5',
+      'CSS',
+      'JavaScript',
+      'TypeScript',
+      'Tailwind CSS',
+      'Node.js',
+      'React',
+      'React Native',
+    ],
+    sameAs: site.socials.map((social) => social.url),
+  },
+};
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="https://avatars.githubusercontent.com/u/61228297?v=4" />
+    <link rel="icon" href={site.avatar} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="keywords" content="software engineer, react, react native, javascript, typescript, node.js, web development, portfolio, Alief, Moh Alief Rizky Ramadhan, Tomato" />
-  </head>
-  <body>
+    <meta name="keywords" content={site.keywords} />
+
     <SEO
       title={title}
-      description="Portfolio of Moh Alief Rizky Ramadhan, a Software Engineer specializing in React, React Native, Node.js, and full-stack web development."
-      canonical="https://maliefrr.github.io/"
+      description={site.description}
+      canonical={canonical}
       openGraph={{
         basic: {
           title: title,
           type: 'website',
-          image: 'https://avatars.githubusercontent.com/u/61228297?v=4',
-          url: 'https://maliefrr.github.io/',
+          image: site.avatar,
+          url: site.url,
         },
         optional: {
-          description: 'Portfolio of Moh Alief Rizky Ramadhan, a Software Engineer specializing in React, React Native, Node.js, and full-stack web development.',
+          description: site.description,
         },
       }}
       twitter={{
-        card: 'summary_large_image',
+        card: 'summary',
         title: title,
-        description: 'Portfolio of Moh Alief Rizky Ramadhan, a Software Engineer specializing in React, React Native, Node.js, and full-stack web development.',
-        image: 'https://avatars.githubusercontent.com/u/61228297?v=4',
+        description: site.description,
+        image: site.avatar,
       }}
     />
-    <slot />
+
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(personSchema)}
+    />
+
+    {/* Resolve the theme before first paint so there is no flash of the wrong one. */}
+    <script is:inline>
+      (() => {
+        let stored = null;
+        try {
+          stored = localStorage.getItem('theme');
+        } catch {
+          stored = null;
+        }
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        document.documentElement.dataset.theme =
+          stored === 'light' || stored === 'dark' ? stored : prefersLight ? 'light' : 'dark';
+      })();
+    </script>
+  </head>
+
+  <body class="bg-bg text-text">
+    <a
+      href="#hero"
+      class="glass sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-60 focus:px-4 focus:py-2"
+    >
+      Skip to content
+    </a>
+
+    <header class="fixed inset-x-0 top-3 z-40 px-3 sm:px-4">
+      <Nav client:idle brand={site.shortName} items={navItems} />
+    </header>
+
+    <main>
+      <slot />
+    </main>
   </body>
 </html>

@@ -1,0 +1,88 @@
+---
+import {
+  EnvelopeSimpleIcon,
+  GithubLogoIcon,
+  InstagramLogoIcon,
+  LinkedinLogoIcon,
+  MapPinIcon,
+  WhatsappLogoIcon,
+} from '@phosphor-icons/react';
+import { site } from '../../data/site';
+
+/** Phosphor components render to static HTML here: no client directive, no JS. */
+const socialIcons = {
+  GitHub: GithubLogoIcon,
+  LinkedIn: LinkedinLogoIcon,
+  Instagram: InstagramLogoIcon,
+};
+---
+
+<section id="contact" class="relative px-4 py-24 sm:px-6 sm:py-32">
+  <div class="mx-auto max-w-[1400px]">
+    <div class="glass grid gap-10 p-8 sm:p-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Contact</h2>
+        <p class="mt-4 max-w-[45ch] text-base leading-relaxed text-muted">
+          Open to frontend and React Native work. The fastest way to reach me is email.
+        </p>
+
+        <ul class="mt-8 flex flex-wrap gap-3">
+          {
+            site.socials.map((social) => {
+              const Icon = socialIcons[social.name];
+              return (
+                <li>
+                  <a
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${site.name} on ${social.name}`}
+                    class="grid h-11 w-11 place-items-center rounded-glass border border-line text-muted transition-colors duration-200 hover:border-accent hover:text-accent"
+                  >
+                    <Icon size={20} weight="regular" aria-hidden="true" />
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+
+      <ul class="flex flex-col gap-6">
+        <li>
+          <a
+            href={`mailto:${site.contact.email}`}
+            class="flex items-start gap-3 text-text transition-colors duration-200 hover:text-accent"
+          >
+            <EnvelopeSimpleIcon size={20} weight="regular" aria-hidden="true" className="mt-0.5 shrink-0" />
+            <span class="break-all">{site.contact.email}</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href={site.contact.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-start gap-3 text-text transition-colors duration-200 hover:text-accent"
+          >
+            <WhatsappLogoIcon size={20} weight="regular" aria-hidden="true" className="mt-0.5 shrink-0" />
+            <span>{site.contact.phone}</span>
+          </a>
+        </li>
+
+        <li class="flex items-start gap-3 text-muted">
+          <MapPinIcon size={20} weight="regular" aria-hidden="true" className="mt-0.5 shrink-0" />
+          <span>
+            {site.contact.street}<br />
+            {site.contact.locality}
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <p class="mt-10 text-center font-mono text-xs text-muted">
+      {site.name}
+    </p>
+  </div>
+</section>

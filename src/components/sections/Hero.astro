@@ -1,0 +1,48 @@
+---
+import { site } from '../../data/site';
+import { HeroPanel } from '../HeroPanel';
+import { Nebula } from '../Nebula';
+---
+
+<section
+  id="hero"
+  class="relative isolate flex min-h-[100dvh] items-center overflow-hidden px-4 pb-16 pt-24 sm:px-6"
+>
+  <!--
+    Atmosphere, not an object: WebGL paints across the whole hero on desktop,
+    with the CSS nebula and starfield underneath as its poster frame and as the
+    fallback on mobile and under reduced motion.
+  -->
+  <div class="pointer-events-none absolute inset-0 -z-10">
+    <div class="nebula absolute inset-0"></div>
+    <div class="starfield absolute inset-0 opacity-60"></div>
+    <Nebula client:visible />
+  </div>
+
+  <div class="mx-auto w-full max-w-[1400px]">
+    <HeroPanel client:load>
+      <h1 class="text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+        {site.name}
+      </h1>
+
+      <p class="mt-5 max-w-[46ch] text-base leading-relaxed text-muted sm:text-lg">
+        {site.tagline}
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a
+          href="#projects"
+          class="inline-flex h-11 items-center whitespace-nowrap rounded-glass bg-accent px-5 text-sm font-medium text-accent-ink transition-transform duration-200 hover:opacity-90 active:translate-y-px"
+        >
+          See my work
+        </a>
+        <a
+          href="#contact"
+          class="inline-flex h-11 items-center whitespace-nowrap rounded-glass border border-line px-5 text-sm font-medium text-text transition-colors duration-200 hover:border-accent hover:text-accent active:translate-y-px"
+        >
+          Contact
+        </a>
+      </div>
+    </HeroPanel>
+  </div>
+</section>

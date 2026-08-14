@@ -1,8 +1,18 @@
 ---
 import BaseLayout from '../Layouts/BaseLayout.astro';
-import App from '../App.tsx';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import Experience from '../components/sections/Experience.astro';
+import Projects from '../components/sections/Projects.astro';
+import Skills from '../components/sections/Skills.astro';
+import Contact from '../components/sections/Contact.astro';
 ---
 
-<BaseLayout title="Moh Alief Rizky Ramadhan - Portfolio">
-	<App client:load />
+<BaseLayout>
+  <Hero />
+  <About />
+  <Experience />
+  <Projects />
+  <Skills />
+  <Contact />
 </BaseLayout>

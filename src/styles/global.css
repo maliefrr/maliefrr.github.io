@@ -1,3 +1,158 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+/*
+  Cosmic glass on the Steam base.
+  One accent, one radius, tokens flip by [data-theme] so components never
+  need dark: variants.
+*/
+
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #171a21;
+  --bg-deep: #0d1016;
+  --surface: #1b2838;
+  --line: #2a475e;
+  --text: #e6edf5;
+  /* Lifted so body copy still clears AA where the glass sits over the
+     brightest part of the nebula, not just over the flat page background. */
+  --muted: #a8bacd;
+  --accent: #66c0f4;
+  --accent-ink: #06121c;
+
+  --glass-bg: rgb(27 40 56 / 0.55);
+  --glass-border: rgb(198 213 224 / 0.14);
+  --glass-hi: rgb(255 255 255 / 0.1);
+  --glass-solid: #1b2838;
+
+  --nebula-1: rgb(102 192 244 / 0.22);
+  --nebula-2: rgb(42 71 94 / 0.55);
+  --nebula-3: rgb(126 87 194 / 0.14);
+  --star: rgb(255 255 255 / 0.85);
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #eef3fa;
+  --bg-deep: #dbe7f6;
+  --surface: #ffffff;
+  --line: #c3d4e6;
+  --text: #101c28;
+  --muted: #46586b;
+  --accent: #1b6ca8;
+  --accent-ink: #ffffff;
+
+  --glass-bg: rgb(255 255 255 / 0.6);
+  --glass-border: rgb(16 28 40 / 0.12);
+  --glass-hi: rgb(255 255 255 / 0.75);
+  --glass-solid: #ffffff;
+
+  --nebula-1: rgb(27 108 168 / 0.26);
+  --nebula-2: rgb(151 190 227 / 0.7);
+  --nebula-3: rgb(247 190 130 / 0.42);
+  --star: rgb(27 108 168 / 0.55);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+
+  --radius-glass: 16px;
+
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* clears the fixed nav when jumping to an anchor */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /*
+    Frosted panel. Needs the nebula behind it to read as glass, which is why
+    the cosmic backdrop is a prerequisite and not decoration.
+  */
+  .glass {
+    position: relative;
+    border-radius: var(--radius-glass);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    box-shadow:
+      inset 0 1px 0 var(--glass-hi),
+      0 18px 50px rgb(0 0 0 / 0.22);
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .glass {
+      background: var(--glass-solid);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+
+  .starfield {
+    background-image:
+      radial-gradient(1.2px 1.2px at 12% 18%, var(--star), transparent 60%),
+      radial-gradient(1px 1px at 68% 8%, var(--star), transparent 60%),
+      radial-gradient(1.4px 1.4px at 84% 44%, var(--star), transparent 60%),
+      radial-gradient(1px 1px at 30% 62%, var(--star), transparent 60%),
+      radial-gradient(1.1px 1.1px at 52% 86%, var(--star), transparent 60%),
+      radial-gradient(1px 1px at 8% 78%, var(--star), transparent 60%),
+      radial-gradient(1.3px 1.3px at 92% 74%, var(--star), transparent 60%);
+    background-size: 420px 420px;
+    background-repeat: repeat;
+  }
+
+  .nebula {
+    background-image:
+      radial-gradient(60% 55% at 78% 22%, var(--nebula-1), transparent 70%),
+      radial-gradient(70% 60% at 12% 78%, var(--nebula-3), transparent 72%),
+      radial-gradient(90% 90% at 50% 50%, var(--nebula-2), transparent 78%);
+  }
+}
