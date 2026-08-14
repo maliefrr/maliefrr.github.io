@@ -33,10 +33,12 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          # Tailwind v4's native oxide binding requires Node >= 20. On 18, npm
+          # silently skips it and the build fails with "cannot find native binding".
+          node-version: 22
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: npm ci
       - name: Build
         run: npm run build
       - name: Setup Pages
