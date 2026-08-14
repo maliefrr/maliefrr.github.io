@@ -10,37 +10,25 @@ const rendered = await Promise.all(
     Content: (await render(project)).Content,
   }))
 );
-
-const [feature, ...rest] = rendered;
-
-/** Bento shape: one tall feature cell plus one cell per remaining project. */
-const FEATURE_CELL = 'md:col-span-3 md:row-span-2';
-const SIDE_CELL = 'md:col-span-2';
 ---
 
 <section id="projects" class="relative px-4 py-24 sm:px-6 sm:py-32">
   <div class="mx-auto max-w-[1400px]">
     <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Projects</h2>
 
-    <div class="mt-12 grid gap-4 md:grid-cols-5 md:auto-rows-fr">
+    <!-- Equal cells. `items-stretch` plus `mt-auto` on the link row keeps every
+         card the same height regardless of description length. -->
+    <div class="mt-12 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {
-        [feature, ...rest].map((project, index) => (
-          <article
-            class:list={[
-              'glass group flex flex-col overflow-hidden',
-              index === 0 ? FEATURE_CELL : SIDE_CELL,
-            ]}
-          >
+        rendered.map((project) => (
+          <article class="glass group flex h-full flex-col overflow-hidden">
             <Image
               src={project.data.cover}
               alt={project.data.alt}
               widths={[480, 800, 1200]}
-              sizes="(min-width: 768px) 50vw, 100vw"
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
               loading="lazy"
-              class:list={[
-                'w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]',
-                index === 0 ? 'aspect-[16/10]' : 'aspect-[16/9]',
-              ]}
+              class="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
             />
 
             <div class="flex flex-1 flex-col p-6">
@@ -54,11 +42,11 @@ const SIDE_CELL = 'md:col-span-2';
                 ))}
               </div>
 
-              <div class="prose-none mt-4 text-sm leading-relaxed text-muted">
+              <div class="mt-4 text-sm leading-relaxed text-muted">
                 <project.Content />
               </div>
 
-              <div class="mt-6 flex flex-wrap gap-x-5 gap-y-2 pt-2">
+              <div class="mt-auto flex flex-wrap gap-x-5 gap-y-2 pt-6">
                 {project.data.links.map((link) => (
                   <a
                     href={link.url}
