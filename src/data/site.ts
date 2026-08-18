@@ -1,18 +1,18 @@
 export const site = {
   name: 'Moh Alief Rizky Ramadhan',
   shortName: 'Moh Alief Rizky R',
-  jobTitle: 'Frontend Engineer',
+  jobTitle: 'Full-Stack Developer',
   url: 'https://maliefrr.github.io/',
   avatar: 'https://avatars.githubusercontent.com/u/61228297?v=4',
   title: 'Moh Alief Rizky Ramadhan - Portfolio',
   tagline:
-    'Frontend engineer building React and React Native products for insurance, health tech, and public services.',
+    'Full-stack developer building end-to-end products with React, Node.js, and Express across insurance, game platforms, and e-commerce.',
   description:
-    'Portfolio of Moh Alief Rizky Ramadhan, a Software Engineer specializing in React, React Native, Node.js, and full-stack web development.',
+    'Portfolio of Moh Alief Rizky Ramadhan, a Full-Stack Developer specializing in React, React Native, Next.js, Node.js, Express.js, and PostgreSQL.',
   keywords:
-    'software engineer, react, react native, javascript, typescript, node.js, web development, portfolio, Alief, Moh Alief Rizky Ramadhan, Tomato',
+    'full-stack developer, software engineer, react, react native, next.js, astro, node.js, express.js, typescript, supabase, postgresql, grafana, web development, portfolio, Alief, Moh Alief Rizky Ramadhan, Tomato',
   summary:
-    'Experienced Software Engineer with a strong foundation in academia, freelance development, and technical support. Proficient in React.js, React Native, and Express.js, with a focus on building responsive, user-friendly web applications. Known for clear communication, mentoring, and cross-functional collaboration. Past projects include a medical online queue app, an Android app for a civil service unit, and an electronic student identity system. Former assistant lecturer at Halu Oleo University and technical support staff in the health tech industry, bringing a unique blend of technical skill and user-centric thinking.',
+    'Full-stack developer building complete systems, from backend APIs to admin dashboards to analytics, across insurance, game platforms, and e-commerce. I built a purchase flow configuration framework that cut product onboarding cycles by 60%, led an Astro migration that lifted Lighthouse performance from 43 to 86, and integrated OCR automation that removed roughly 40% of manual claim input. On the full-stack side I shipped a game platform on Express.js with a WYSIWYG admin dashboard, Grafana analytics covering DAU, revenue, ARPPU and engagement cohorts, and an automated asset deployment pipeline. My stack is TypeScript, React, React Native, Next.js, Node.js, Express.js, Supabase, PostgreSQL, and Grafana. A computer science graduate who works best collaborating across teams and shipping end-to-end products.',
   alumniOf: 'Halu Oleo University',
   contact: {
     email: 'maliefrr14@gmail.com',

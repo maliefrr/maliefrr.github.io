@@ -37,9 +37,19 @@ function monthsToLabel(count: number): string {
 
 const entries = (await getCollection('experience')).sort((a, b) => b.data.order - a.data.order);
 
+/** Body is optional markdown; only the leading "- " bullet list is rendered. */
+function toHighlights(body: string | undefined): string[] {
+  return (body ?? '')
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith('- '))
+    .map((line) => line.slice(2));
+}
+
 const rows = entries.map((entry) => ({
   ...entry.data,
   isCurrent: entry.data.end === 'Present',
+  highlights: toHighlights(entry.body),
   duration: monthsToLabel(
     Math.max(toMonthIndex(entry.data.end) - toMonthIndex(entry.data.start), 1)
   ),
@@ -60,7 +70,7 @@ const employers = new Set(rows.map((row) => row.company)).size;
       {
         rows.map((row) => (
           <li class="flex flex-col gap-2 py-6 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
-            <div class="min-w-0">
+            <div class="min-w-0 sm:max-w-[70ch]">
               <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                 <h3 class="text-lg font-medium leading-snug sm:text-xl">{row.role}</h3>
                 {row.isCurrent && (
@@ -74,6 +84,13 @@ const employers = new Set(rows.map((row) => row.company)).size;
                 <span class="text-line"> / </span>
                 {row.status}
               </p>
+              {row.highlights.length > 0 && (
+                <ul class="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted marker:text-line">
+                  {row.highlights.map((highlight) => (
+                    <li>{highlight}</li>
+                  ))}
+                </ul>
+              )}
             </div>
 
             <p

@@ -10,7 +10,7 @@ const experience = defineCollection({
   schema: z.object({
     role: z.string(),
     company: z.string(),
-    status: z.enum(['Fulltime', 'Parttime', 'Internship', 'Freelance']),
+    status: z.enum(['Fulltime', 'Parttime', 'Internship', 'Freelance', 'Contract']),
     start: z.string(),
     end: z.string(),
     order: z.number().int(),

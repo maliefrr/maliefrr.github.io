@@ -59,6 +59,8 @@ export async function buildLlmsFull(): Promise<string> {
         `- Period: ${entry.data.start} to ${entry.data.end}`,
         `- Employment type: ${entry.data.status}`,
         '',
+        (entry.body ?? '').trim(),
+        '',
       ].join('\n')
     ),
     '## Projects',
