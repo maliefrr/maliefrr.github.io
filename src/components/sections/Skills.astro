@@ -1,29 +1,54 @@
 ---
 import { skills } from '../../data/skills';
+import { skillLevels } from '../../data/gamification';
+import type { SkillLevel } from '../../data/gamification';
+
+const levelByName = new Map(skillLevels.map((s) => [s.name, s]));
+const categoryLabel: Record<SkillLevel['category'], string> = {
+  frontend: 'Frontend',
+  backend: 'Backend',
+  mobile: 'Mobile',
+  tooling: 'Tooling',
+};
 ---
 
 <section id="skills" class="relative bg-bg-deep px-4 py-24 sm:px-6 sm:py-32">
   <div class="mx-auto max-w-[1400px]">
-    <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Skills</h2>
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Skill Tree</h2>
+        <p class="mt-4 max-w-[55ch] text-base leading-relaxed text-muted">
+          Abilities unlocked across the frontend, backend, and mobile skill branches.
+        </p>
+      </div>
+      <p class="font-mono text-[11px] text-muted">
+        {skillLevels.length} abilities unlocked
+      </p>
+    </div>
 
-    <!-- Dense inline marks, no card containers: the row itself is the group. -->
-    <ul class="mt-12 flex flex-wrap gap-x-10 gap-y-8 sm:gap-x-14">
+    <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {
-        skills.map((skill) => (
-          <li class="group flex w-20 flex-col items-center gap-3 sm:w-24">
-            <svg
-              role="img"
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              class="h-9 w-9 fill-muted transition-colors duration-300 group-hover:fill-accent sm:h-10 sm:w-10"
-            >
-              <path d={skill.path} />
-            </svg>
-            <span class="text-center font-mono text-[11px] leading-tight text-muted transition-colors duration-300 group-hover:text-text">
-              {skill.name}
-            </span>
-          </li>
-        ))
+        skills.map((skill) => {
+          const level = levelByName.get(skill.name);
+          return (
+            <li class="group glass flex items-center gap-4 p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/60">
+              <svg
+                role="img"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                class="h-8 w-8 fill-muted transition-colors duration-300 group-hover:fill-accent"
+              >
+                <path d={skill.path} />
+              </svg>
+              <div class="min-w-0 flex-1">
+                <p class="font-medium text-text">{skill.name}</p>
+                <p class="font-mono text-[10px] uppercase tracking-wider text-muted">
+                  {level ? categoryLabel[level.category] : 'Unranked'}
+                </p>
+              </div>
+            </li>
+          );
+        })
       }
     </ul>
   </div>

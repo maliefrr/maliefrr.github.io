@@ -128,12 +128,12 @@ test.describe('navigation', () => {
 });
 
 test.describe('projects', () => {
-  test('renders three cards of equal size', async ({ page }) => {
+  test('renders four cards of equal size', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/');
 
     const cards = page.locator('#projects article');
-    await expect(cards).toHaveCount(3);
+    await expect(cards).toHaveCount(4);
 
     const boxes = await cards.evaluateAll((nodes) =>
       nodes.map((node) => {

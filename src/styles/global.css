@@ -195,4 +195,33 @@
       radial-gradient(70% 60% at 12% 78%, var(--nebula-3), transparent 72%),
       radial-gradient(90% 90% at 50% 50%, var(--nebula-2), transparent 78%);
   }
+
+  /*
+    Gamification bars. Animate from 0 to final width on load, then hold.
+    The final width is set inline; this keyframe only defines the motion curve.
+  */
+  @keyframes fill-bar {
+    from {
+      width: 0%;
+    }
+  }
+
+  .xp-bar {
+    animation: fill-bar 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+
+  /* Achievement cards light up on hover with their rarity tint. */
+  [style*='--rarity'] {
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  [style*='--rarity']:hover {
+    box-shadow:
+      inset 0 1px 0 var(--glass-hi),
+      0 18px 50px rgb(0 0 0 / 0.22),
+      0 0 0 1px color-mix(in srgb, var(--rarity) 25%, transparent);
+  }
 }

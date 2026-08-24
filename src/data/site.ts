@@ -35,7 +35,7 @@ export const site = {
  */
 export const navItems = [
   { label: 'Home', href: '#home' },
-  { label: 'Experience', href: '#experience' },
+  { label: 'Quests', href: '#experience' },
   { label: 'Project', href: '#projects' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },

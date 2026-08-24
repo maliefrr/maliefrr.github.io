@@ -1,6 +1,9 @@
 ---
 import { site } from '../../data/site';
+import { playerStats } from '../../data/gamification';
 import { Nebula } from '../Nebula';
+
+const heroStats = playerStats.filter((s) => ['Class', 'Level', 'XP', 'Projects', 'Quests'].includes(s.label));
 ---
 
 <section
@@ -25,13 +28,40 @@ import { Nebula } from '../Nebula';
       exist. The tilt below is progressive enhancement over static HTML.
     -->
     <div class="tilt glass w-full max-w-2xl p-7 sm:p-10" data-tilt>
-      <h1 class="text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+      <div class="flex items-center justify-between gap-3">
+        <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Player Card</span>
+        <span class="inline-flex items-center gap-1 rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 font-mono text-[10px] font-medium text-accent">
+          <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" aria-hidden="true"></span>
+          Lv. {playerStats.find((s) => s.label === 'Level')?.value}
+        </span>
+      </div>
+
+      <h1 class="mt-3 text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
         {site.name}
       </h1>
 
       <p class="mt-5 max-w-[46ch] text-base leading-relaxed text-muted sm:text-lg">
         {site.tagline}
       </p>
+
+      <div class="mt-6 space-y-2">
+        <div class="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-muted">
+          <span>Experience</span>
+          <span>{playerStats.find((s) => s.label === 'XP')?.value}</span>
+        </div>
+        <div class="h-2 w-full overflow-hidden rounded-full bg-line/30">
+          <div class="h-full w-[74%] rounded-full bg-accent xp-bar" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <dl class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {heroStats.filter((s) => s.label !== 'XP').map((stat) => (
+          <div class="rounded-glass border border-line/40 bg-surface/40 p-3">
+            <dt class="font-mono text-[10px] uppercase tracking-wider text-muted">{stat.label}</dt>
+            <dd class="mt-1 text-sm font-medium text-text">{stat.value}</dd>
+          </div>
+        ))}
+      </dl>
 
       <div class="mt-8 flex flex-wrap items-center gap-3">
         <a

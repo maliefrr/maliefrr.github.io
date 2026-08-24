@@ -18,7 +18,7 @@ const rendered = await Promise.all(
 
     <!-- Equal cells. `items-stretch` plus `mt-auto` on the link row keeps every
          card the same height regardless of description length. -->
-    <div class="mt-12 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-12 grid auto-rows-fr items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {
         rendered.map((project) => (
           <article class="glass group flex h-full flex-col overflow-hidden">
