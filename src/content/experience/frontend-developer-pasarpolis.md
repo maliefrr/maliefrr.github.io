@@ -2,16 +2,13 @@
 role: Frontend Developer
 company: Pasarpolis Indonesia
 status: Fulltime
-start: Dec 2024
-end: Present
-order: 7
+start: Jun 2024
+end: Oct 2026
+order: 6
 ---
 
-- Built a purchase flow configuration framework that reduced the product onboarding cycle by 60% and accelerated feature delivery timelines.
-- Led the migration of key marketing pages to Astro, lifting Lighthouse scores from 43 to 86 on performance, 59 to 81 on accessibility, 57 to 73 on best practices and 83 to 92 on SEO.
-- Integrated OCR automation that cut manual claim input by roughly 40% while improving data accuracy and submission efficiency.
-- Digitised the car damage assessment workflow, replacing manual mark-and-scan forms with an interactive web tool that removed scanning steps and added real-time validation.
-- Collaborated with backend engineering teams, including the India team, to integrate more than 10 APIs across systems.
-- Serve as the main frontend maintainer for claim-related features across 8 production portals.
-- Designed and maintained Jinja2-based EDM templates for consistent claim notifications.
-- Implemented frontend tracking aligned with analytics requirements to support data-driven product decisions.
+- Led the migration of key marketing pages to Astro, optimizing web performance and increasing Lighthouse Performance from 43 to 86, while improving Accessibility to 81, Best Practices to 73, and SEO to 92 
+- Integrated OCR automation into the claims workflow, reducing manual claim data entry by ~40%, and digitized vehicle damage assessment through an interactive web-based workflow
+- Integrated 10+ backend APIs and maintained claim-related functionality across 8 production portals and agent-facing broker applications supporting multiple insurance providers
+- Built AI-powered automation using Hermes Agent and MCP, including a GitLab code-review bot that reduced manual review workload and a Metabase data-retrieval bot that reduced ad hoc requests to the Data team by  70% 
+- Implemented frontend analytics, Jinja2-based EDM templates, and Jest unit testing to improve product visibility, communication reliability, and regression coverage

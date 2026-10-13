@@ -6,7 +6,7 @@ export const site = {
   avatar: 'https://avatars.githubusercontent.com/u/61228297?v=4',
   title: 'Moh Alief Rizky Ramadhan - Portfolio',
   tagline:
-    'Full-stack developer building end-to-end products with React, Node.js, and Express across insurance, game platforms, and e-commerce.',
+    'Software Engineer experienced in building production systems across the full application stack. Skilled in JavaScript, TypeScript, React, Node.js, and Express.js, with experience in API development, databases, authentication, testing, analytics, deployment, and internal automation',
   description:
     'Portfolio of Moh Alief Rizky Ramadhan, a Full-Stack Developer specializing in React, React Native, Next.js, Node.js, Express.js, and PostgreSQL.',
   keywords:

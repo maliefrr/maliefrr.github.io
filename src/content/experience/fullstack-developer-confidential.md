@@ -4,7 +4,7 @@ company: Confidential Client
 status: Contract
 start: Nov 2024
 end: Present
-order: 6
+order: 7
 ---
 
 - Built a full-stack game platform on an Express.js backend, together with the company website.
