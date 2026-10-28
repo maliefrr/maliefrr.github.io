@@ -64,7 +64,7 @@ test.describe('agent-readable routes', () => {
 
     // Every role and project on the page must appear in the text mirror.
     for (const role of [
-      'Frontend Developer',
+      'Software Engineer',
       'Technical Support Staff',
       'Android Developer',
       'Junior ERP Support',
