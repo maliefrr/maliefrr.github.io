@@ -1,5 +1,5 @@
 ---
-role: Frontend Developer
+role: Software Engineer
 company: Pasarpolis Indonesia
 status: Fulltime
 start: Jun 2024
